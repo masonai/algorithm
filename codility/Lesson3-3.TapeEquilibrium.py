@@ -3,31 +3,23 @@ def solution(A):
     if len(A) == 1:
         return A[0]
 
-    diff = []
+    total_sum = sum(A)
+
+    left_sum = 0
+    diff_list = []
     for i in range(len(A)-1):
-        s = i+1
+        left_sum += A[i]
+        right_sum = total_sum - left_sum
 
-        t1 = A[:s]
-        t2 = A[s:]
-        s1 = sum(t1)
-        s2 = sum(t2)
+        diff = abs(left_sum - right_sum)
+        diff_list.append(diff)
 
-        if abs(s1-s2) == 0:
-            return 0
-        '''
-        s1, s2 = 0, 0
-        for t in t1:
-            s1 += t
-        for t in t2:
-            s2 +=t
-        '''
-        diff.append(abs(s1-s2))
-
-    return min(diff)
+    return min(diff_list)
 
     pass
 
 
-A = [1,1,1]
-r = solution(A)
-print(r)
+A = [3,1,2,4,3]
+a = solution(A)
+
+
